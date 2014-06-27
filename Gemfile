@@ -12,6 +12,7 @@ gem 'spring',        group: :development
 gem 'bootstrap-sass'
 gem 'high_voltage'
 gem 'pg'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_21]
@@ -24,6 +25,8 @@ group :development do
   gem 'rb-fchange', :require=>false
   gem 'rb-fsevent', :require=>false
   gem 'rb-inotify', :require=>false
+  gem 'guard-livereload'
+  gem 'rack-livereload'
 end
 group :development, :test do
   gem 'factory_girl_rails'
@@ -36,3 +39,5 @@ group :test do
   gem 'launchy'
   gem 'selenium-webdriver'
 end
+
+gem 'bcrypt'
