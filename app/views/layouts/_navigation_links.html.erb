@@ -2,4 +2,11 @@
 <li><%= link_to 'About', page_path('about') %></li>
 
 
-<li><%= link_to 'Register', register_path %></li>
+
+<% if current_user %>
+  <li><%= current_user.username %>
+<% else %>
+  <li class="pull-right"><%= link_to 'Register', register_path %></li>
+
+  <li class="pull-right"><%= link_to "Login", login_path %></li>
+<% end %>

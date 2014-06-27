@@ -40,4 +40,4 @@ group :test do
   gem 'selenium-webdriver'
 end
 
-gem 'bcrypt'
+gem 'bcrypt-ruby', '3.1.2'

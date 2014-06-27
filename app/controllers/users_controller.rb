@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+
+  def index
+  end
+
   def new
     @user = User.new
   end
@@ -9,6 +13,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to root_url, notice: "Thanks for signing up!"
     else
+
       render 'new'
     end
   end

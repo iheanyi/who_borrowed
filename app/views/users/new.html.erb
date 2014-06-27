@@ -7,9 +7,11 @@
       <div class="error_messages">
         <h2>Invalid Form</h2>
         <ul>
-          <% @user.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
+          <div class="alert alert-danger" role="alert">
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </div>
         </ul>
       </div>
     <% end %>
