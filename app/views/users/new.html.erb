@@ -3,18 +3,7 @@
 <div class="col-md-6 col-md-offset-3">
   <h1>Sign Up</h1>
   <%= form_for @user do |f| %>
-    <% if @user.errors.any? %>
-      <div class="error_messages">
-        <h2>Invalid Form</h2>
-        <ul>
-          <div class="alert alert-danger" role="alert">
-            <% @user.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </div>
-        </ul>
-      </div>
-    <% end %>
+    <%= render 'shared/error_messages', object: f.object %>
 
     <div class="form-group">
       <%= f.label :username %>

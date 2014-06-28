@@ -1,4 +1,13 @@
 
 <div class="container">
-  <h3>Welcome to WhoBorrowed, an app to track who borrows your stuff!</h3>
+
+  <% if signed_in? %>
+    <%= render 'users/inventory' %>
+
+
+  <% else %>
+
+    <h3>Welcome to WhoBorrowed, an app to track who borrows your stuff!</h3>
+
+  <% end %>
 </div>
