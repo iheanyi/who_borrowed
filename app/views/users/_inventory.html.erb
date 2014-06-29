@@ -1,0 +1,28 @@
+
+
+<div class="row">
+
+  <h1>Your Inventory</h1>
+
+  <%= link_to "Add New Item", new_item_url, class: "btn btn-default pull-right" %>
+
+  <div class="col-md-10 col-md-offset-1">
+
+      <h1>Your Inventory</h1>
+
+
+      <div class="row inventory-card">
+        <ul class="inventory-items">
+          <% current_user.items.each do |item| %>
+            <li>
+
+              <h4><%= item.name %></h4>
+
+              <p>Added On: <%= item.created_at.to_formatted_s %></p>
+
+            </li>
+          <% end %>
+        </ul>
+      </div>
+  </div>
+</div>

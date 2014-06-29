@@ -1,0 +1,14 @@
+
+<div class="col-md-6 col-md-offset-3">
+  <h1>Add a New Item</h1>
+  <%= form_for @item do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+
+    <%= submit_tag "Add Item", class: "btn btn-large btn-primary" %>
+  <% end %>
+</div>
