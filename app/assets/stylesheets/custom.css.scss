@@ -1,5 +1,8 @@
 @import "framework_and_overrides";
 
+
+$base-color: #34495e;
+
 // Inventory
 .inventory-items {
   list-style: none;
@@ -12,3 +15,58 @@
   background: #fff;
   padding: 16px;
 }
+
+.card-container {
+  //margin-top: 40px;
+  background: #fff;
+  //padding-left: 24px;
+  padding-right: 24px;
+  height: 400px;
+  border-radius: 4px;
+}
+
+.push-down {
+  margin-top: 40px;
+}
+
+.inventory-header {
+  background: $base-color;
+  height: 100%;
+  //padding-top: 24px;
+  border-radius: 4px 4px 0 0;
+  vertical-align: middle;
+  line-height: 40px;
+  padding: 20px;
+}
+
+.inv-header-container {
+  vertical-align: middle;
+  line-height: 40px;
+}
+.info-subhead {
+  margin-top: 8px;
+  text-align: center;
+}
+
+.normal-card {
+  padding: 24px;
+}
+
+.white-header {
+  color: #fff;
+}
+no-margin {
+  margin-left: 0;
+  padding-left: 0;
+  margin-right: 0;
+  padding-right: 0;
+}
+
+.item-unit {
+  border-bottom: 1px solid #a5a5a5;
+
+}
+/*.float-left {
+  clear: left;
+  float: left;
+}*/

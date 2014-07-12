@@ -1,28 +1,87 @@
 
 
-<div class="row">
 
-  <h1>Your Inventory</h1>
-
-  <%= link_to "Add New Item", new_item_url, class: "btn btn-default pull-right" %>
+<div class="row push-down">
 
   <div class="col-md-10 col-md-offset-1">
 
-      <h1>Your Inventory</h1>
+    <div class="col-md-4 card-container normal-card">
 
-
-      <div class="row inventory-card">
-        <ul class="inventory-items">
-          <% current_user.items.each do |item| %>
-            <li>
-
-              <h4><%= item.name %></h4>
-
-              <p>Added On: <%= item.created_at.to_formatted_s %></p>
-
-            </li>
-          <% end %>
-        </ul>
+      <!-- User Image and Username -->
+      <div class="row no-margin">
+        <div class="col-md-4">
+        <% if current_user.facebook %>
+          <img  class="img-circle" src="<%= current_user.get_facebook_picture %>" alt="" />
+        <% end %>
+        </div>
+        <div class="col-md-8"><h3><%= current_user.facebook.get_object("me")["name"] %></h3></div>
       </div>
+
+      <!-- User Item Count and User Borrower Count -->
+
+      <div class="row info-subhead">
+
+        <div class="col-md-6">
+
+          <h4>Items</h4>
+
+          <div class="row">
+            <div class="col-md-12">
+              <%= current_user.items.count %>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-md-6">
+          <h4>Borrowers</h4>
+
+          <div class="row">
+            <div class="col-md-12">
+              <%= current_user.borrowers.count %>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-md-7 col-md-offset-1 card-container">
+        <div class="row">
+          <div class="col-md-12 inventory-header">
+            <div class="row">
+              <div class="col-md-4 inv-header-container">
+                <h4 class="white-header">User Inventory</h4>
+              </div>
+
+              <div class="col-md-4 pull-right">
+                <%= link_to "<i class='glyphicon glyphicon-plus'></i> Add New Item".html_safe, new_item_url, class: "btn btn-default pull-right" %>
+                <!-- <button class="btn btn-default"><i class="glyphicon glyphicon-plus"></i> Add New Item</button> -->
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          <% current_user.items.each do |item| %>
+            <div class="col-md-12 float-left item-unit">
+              <div class="col-md-4">
+                <%= image_tag item.image.url, class: "img-square" %>
+              </div>
+              <div class="col-md-8">
+
+                <h4><%= item.name %></h4>
+
+              </div>
+            </div>
+          <% end %>
+        </div>
+
+    </div>
+
   </div>
-</div>
+
+ </div>

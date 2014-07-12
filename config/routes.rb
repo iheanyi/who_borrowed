@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  resources :loans
+
   get 'authentications/index'
 
   resources :items
 
   resources :users
+  resources :borrowers
 
   resources :sessions, only: [:new, :create, :destroy]
 

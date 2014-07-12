@@ -1,0 +1,2 @@
+class BorrowersController < ApplicationController
+end

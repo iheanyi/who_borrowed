@@ -15,6 +15,7 @@ gem 'pg'
 gem 'omniauth-facebook'
 gem 'figaro'
 gem 'koala'
+gem "paperclip", "~> 4.1"
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_21]
