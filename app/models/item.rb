@@ -1,8 +1,14 @@
 class Item < ActiveRecord::Base
-  has_attached_file :image, :default_url => "http://placehold.it/150x150"
+  has_attached_file :image, :styles => { :medium => "300x300", :thumb => "100x100" }, :default_url => "http://placehold.it/150x150"
   belongs_to :category
   belongs_to :user
 
+  has_many :loans, :foreign_key => "item_id"
+  has_many :borrowers, :through => :loans
+
+  accepts_nested_attributes_for :loans
+
   validates :name, presence: true
   validates :user_id, presence: true
+  validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 end

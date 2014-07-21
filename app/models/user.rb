@@ -18,6 +18,8 @@
 
 
   validates :password, presence: true, length: { minimum: 6 }
+  accepts_nested_attributes_for :loans
+
 
   def facebook
     fb_auth = authentications.find_by(provider: "facebook")

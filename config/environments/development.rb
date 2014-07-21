@@ -36,5 +36,6 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
   #config.middleware.use Rack::LiveReload
   config.middleware.insert_after(ActionDispatch::Static, Rack::LiveReload)
-
+  Paperclip.options[:command_path] = "/usr/local/bin/"
+  
 end

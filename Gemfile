@@ -16,6 +16,11 @@ gem 'omniauth-facebook'
 gem 'figaro'
 gem 'koala'
 gem "paperclip", "~> 4.1"
+gem "formtastic"
+gem 'formtastic-bootstrap'
+gem 'bootstrap-datepicker-rails'
+gem 'bootstrap_form'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_21]

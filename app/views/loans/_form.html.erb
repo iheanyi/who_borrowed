@@ -1,0 +1,39 @@
+  <h1>Create New Loan Form here</h1>
+    <h3>Parameters for Loan Form (nested forms)</h3>
+    <ul>
+      <li>New/Existing Item Form, should have item name, specify a picture to upload</li>
+      <li>New/Existing Borrower Form, borrower name (autocomplete with Facebook friends name and the likes)</li>
+      <li>Date of Loan (add a checkbox for unknown)</li>
+      <li>Requested Return Date (add a checkbox for indeterminate/whenever)</li>
+      <li>If there is a requested return date, then show a checkbox for an e-mail reminder.</li>
+      <li>No requested return date? Then the checkbox should state, "E-mail me in N [days, weeks,months] from [today, loan date]</li>
+      <li>And Submit Button</li>
+  </ul>
+
+<div class="col-md-6 col-md-offset-3">
+  <%= bootstrap_form_for @loan do |f| %>
+    <%= f.fields_for :borrower do |b| %>
+        <%= b.text_field :name, label: "Borrower's Name" %>
+    <% end %>
+
+    <%= f.fields_for :item do |i| %>
+      <%= i.text_field :name, label: "Item Name" %>
+      <%= i.file_field :image, label: "Picture of Item (Optional)" %>
+    <% end %>
+
+
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.date_field :loaned_on %>
+      </div>
+
+      <div class="col-md-6">
+        <%= f.date_field :return_by %>
+      </div>
+    </div>
+
+
+    <%= f.submit "Create New Loan", class: "btn btn-primary" %>
+  <% end %>
+
+</div>
