@@ -26,6 +26,6 @@ class LoansController < ApplicationController
 
   private
     def loan_params
-      params.require(:loan).permit(:loaned_on, :return_by)
+      params.require(:loan).permit(:loaned_on, :return_by, :unknown_date)
     end
 end

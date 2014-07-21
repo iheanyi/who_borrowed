@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140718132337) do
+ActiveRecord::Schema.define(version: 20140721134108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,15 @@ ActiveRecord::Schema.define(version: 20140718132337) do
   add_index "items", ["category_id"], name: "index_items_on_category_id", using: :btree
   add_index "items", ["user_id"], name: "index_items_on_user_id", using: :btree
 
+  create_table "loan_email_reminders", force: true do |t|
+    t.integer  "loan_id"
+    t.date     "send_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "loan_email_reminders", ["loan_id"], name: "index_loan_email_reminders_on_loan_id", using: :btree
+
   create_table "loans", force: true do |t|
     t.integer  "borrower_id"
     t.integer  "lender_id"
@@ -84,6 +93,8 @@ ActiveRecord::Schema.define(version: 20140718132337) do
     t.date     "return_by"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "unknown_loan_date"
+    t.boolean  "return_whenever"
   end
 
   create_table "users", force: true do |t|
