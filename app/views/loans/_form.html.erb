@@ -25,11 +25,12 @@
     <div class="row">
       <div class="col-md-6">
         <%= f.date_field :loaned_on %>
-        <%= f.check_box :unknown_date %>
+        <%= f.check_box :unknown_loan_date, label: "Don't Remember" %>
       </div>
 
       <div class="col-md-6">
         <%= f.date_field :return_by %>
+        <%= f.check_box :return_whenever, label: "Return Whenever" %>
       </div>
     </div>
 
