@@ -11,7 +11,7 @@
       <div class="row no-margin">
         <div class="col-md-4">
         <% if current_user.facebook %>
-          <img  class="img-circle" src="<%= current_user.get_facebook_picture %>" alt="" />
+          <img  class="" src="<%= current_user.get_facebook_picture %>" alt="" />
         <% end %>
         </div>
         <div class="col-md-8"><h3><%= current_user.facebook.get_object("me")["name"] %></h3></div>
@@ -66,14 +66,16 @@
 
         <div class="row">
 
-          <% current_user.items.each do |item| %>
+          <% current_user.loans.each do |loan| %>
             <div class="col-md-12 float-left item-unit">
               <div class="col-md-4">
-                <%= image_tag item.image.url, class: "img-square" %>
+                <%= image_tag loan.item.image.url, class: "img-square" %>
               </div>
               <div class="col-md-8">
 
-                <h4><%= item.name %></h4>
+                <h4><%= loan.item.name %></h4>
+                <h5>Borrowed by <%= loan.borrower.name %></h5>
+                <h6>Borrowed on <%= loan.loaned_on %>, should return by <%= loan.return_by %></h6>
 
               </div>
             </div>

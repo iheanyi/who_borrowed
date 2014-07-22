@@ -1,5 +1,5 @@
 class Loan < ActiveRecord::Base
-  belongs_to :lender, class_name: "User"
+  belongs_to :lender, class_name: "User", :dependent => :destroy
   belongs_to :borrower, class_name: "Borrower"
   belongs_to :item
 
@@ -8,6 +8,6 @@ class Loan < ActiveRecord::Base
   end
 
   def borrower_attributes= p
-    build_borrower p
+    build_borrower p.merge( user: lender)
   end
 end
