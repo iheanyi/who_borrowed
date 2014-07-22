@@ -27,6 +27,7 @@ class LoansController < ApplicationController
 
   private
     def loan_params
-      params.require(:loan).permit(:loaned_on, :return_by, :unknown_date)
+      params.require(:loan).permit(:loaned_on, :return_by, :unknown_date, :unknown_loan_date, :return_whenever, :email_me,
+                                   borrower_attributes: [ :name ], item_attributes: [ :name, :image ])
     end
 end

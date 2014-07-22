@@ -6,9 +6,7 @@ class Item < ActiveRecord::Base
   has_many :loans, :foreign_key => "item_id"
   has_many :borrowers, :through => :loans
 
-  accepts_nested_attributes_for :loans
-
   validates :name, presence: true
   validates :user_id, presence: true
-  validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+  #validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 end
