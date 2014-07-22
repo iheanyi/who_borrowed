@@ -8,7 +8,8 @@ class LoansController < ApplicationController
   end
 
   def create
-    @loan = current_user.loans.build(loan_params)
+    @loan = current_user.loans.build
+    @loan.attributes = loan_params
 
     if @loan.save
       flash[:success] = "Loan Created!"
