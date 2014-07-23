@@ -20,6 +20,7 @@ gem "formtastic"
 gem 'formtastic-bootstrap'
 gem 'bootstrap-datepicker-rails'
 gem 'bootstrap_form'
+gem 'rails_12factor', group: :production
 
 group :development do
   gem 'better_errors'
