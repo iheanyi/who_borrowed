@@ -10,9 +10,7 @@
       <!-- User Image and Username -->
       <div class="row no-margin">
         <div class="col-md-4">
-        <% if current_user.facebook %>
-          <img  class="" src="<%= current_user.get_facebook_picture %>" alt="" />
-        <% end %>
+          <img  class="" src="<%= current_user.gravatar_url %>" alt="" />
         </div>
         <div class="col-md-8"><h3><%= current_user.facebook.get_object("me")["name"] %></h3></div>
       </div>

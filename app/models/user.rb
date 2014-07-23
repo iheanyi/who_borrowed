@@ -46,6 +46,11 @@
     self.facebook.get_picture("me", :type => "normal")
   end
 
+  def gravatar_url
+    gravatar_id = Digest::MD5::hexdigest(self.email).downcase
+    "http://gravatar.com/avatar/#{gravatar_id}.png?s=48"
+  end
+
   def get_facebook_object_attribute(user, attribute)
     self.facebook.get_object(user)
   end
