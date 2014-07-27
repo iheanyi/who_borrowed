@@ -7,6 +7,22 @@ class LoansController < ApplicationController
     @loan = Loan.new
   end
 
+
+  def edit
+    @loan = Loan.find(params[:id])
+  end
+
+  def update
+    @loan = Loan.find(params[:id])
+  end
+
+  def destroy
+    @loan  = Loan.find(params[:id])
+    @loan.destroy
+
+    redirect_to root_url
+  end
+
   def create
     @loan = current_user.loans.build
     @loan.attributes = loan_params

@@ -1,8 +1,9 @@
 
 <div class="container">
   <% if signed_in? %>
-    <%= render 'users/inventory' %>
+    <%= render 'users/application_view' %>
   <% else %>
-    <h3>Welcome to WhoBorrowed, an app to track who borrows your stuff!</h3>
+
+    <%= render 'visitors/welcome' %>
   <% end %>
 </div>

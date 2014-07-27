@@ -4,45 +4,7 @@
 <div class="row push-down">
 
   <div class="col-md-10 col-md-offset-1">
-
-    <div class="col-md-4 card-container normal-card">
-
-      <!-- User Image and Username -->
-      <div class="row no-margin">
-        <div class="col-md-4">
-          <img  class="" src="<%= current_user.gravatar_url %>" alt="" />
-        </div>
-        <div class="col-md-8"><h3><%= current_user.username %></h3></div>
-      </div>
-
-      <!-- User Item Count and User Borrower Count -->
-
-      <div class="row info-subhead">
-
-        <div class="col-md-6">
-
-          <h4>Items</h4>
-
-          <div class="row">
-            <div class="col-md-12">
-              <%= current_user.items.count %>
-            </div>
-          </div>
-
-        </div>
-        <div class="col-md-6">
-          <h4>Borrowers</h4>
-
-          <div class="row">
-            <div class="col-md-12">
-              <%= current_user.borrowers.count %>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-    </div>
+    <%= render 'users/user_info' %>
 
     <div class="col-md-7 col-md-offset-1 card-container">
         <div class="row">
@@ -54,7 +16,6 @@
 
               <div class="col-md-4 pull-right">
                 <%= link_to "<i class='glyphicon glyphicon-plus'></i> Add Loan".html_safe, new_loan_url, class: "btn btn-default pull-right" %>
-                <!-- <button class="btn btn-default"><i class="glyphicon glyphicon-plus"></i> Add New Item</button> -->
               </div>
             </div>
 
@@ -74,6 +35,9 @@
                 <h4><%= loan.item.name %></h4>
                 <h5>Borrowed by <%= loan.borrower.name %></h5>
                 <h6>Borrowed on <%= loan.loaned_on %>, should return by <%= loan.return_by %></h6>
+
+                <%= link_to 'Remove Loan', loan_path(loan), method: :delete,
+                data: { confirm: 'Are you sure?' } %>
 
               </div>
             </div>
