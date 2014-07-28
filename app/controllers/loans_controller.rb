@@ -20,6 +20,8 @@ class LoansController < ApplicationController
     @loan  = Loan.find(params[:id])
     @loan.destroy
 
+    flash[:success] = "Loan successfully removed!"
+
     redirect_to root_url
   end
 
@@ -28,6 +30,8 @@ class LoansController < ApplicationController
     @loan.attributes = loan_params
 
     if @loan.save
+      UserMailer.loan_email(current_user, @loan).deliver
+
       flash[:success] = "Loan Created!"
       redirect_to root_url
     else

@@ -22,4 +22,8 @@ class Loan < ActiveRecord::Base
     def build_reminder
       self.loan_reminders.create(user_id: self.lender_id, send_date: self.return_by)
     end
+
+    def destroy_reminder
+      self.loan_reminders.destroy
+    end
 end
