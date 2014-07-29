@@ -30,8 +30,7 @@ class LoansController < ApplicationController
     @loan.attributes = loan_params
 
     if @loan.save
-      UserMailer.loan_email(current_user, @loan).deliver
-
+      UserMailer.delay.loan_email(current_user, @loan)
       flash[:success] = "Loan Created!"
       redirect_to root_url
     else

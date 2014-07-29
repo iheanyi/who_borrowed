@@ -21,6 +21,13 @@ gem 'formtastic-bootstrap'
 gem 'bootstrap-datepicker-rails'
 gem 'bootstrap_form'
 gem 'rails_12factor', group: :production
+gem 'sidekiq'
+gem 'sinatra', require: false
+gem 'slim'
+gem 'unicorn'
+gem 'dotenv-rails', :groups => [:development, :test]
+gem 'dotenv'
+
 
 group :development do
   gem 'better_errors'

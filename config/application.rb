@@ -1,6 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require 'dotenv' ; Dotenv.load ".env"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -19,6 +20,10 @@ module WhoBorrowed
         request_specs: false
       g.fixture_replacement :factory_girl, dir: "spec/factories"
     end
+
+   # config.autoload_paths += %W(#{config.root}/app/workers)
+    config.eager_load_paths += ["#{config.root}/lib/workers"]
+
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

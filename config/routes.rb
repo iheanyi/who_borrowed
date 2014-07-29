@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   resources :loans
 
@@ -25,5 +27,7 @@ Rails.application.routes.draw do
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
 
   root :to => "visitors#index"
+
+  mount Sidekiq::Web, at: "/sidekiq"
 
 end
