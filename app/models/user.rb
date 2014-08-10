@@ -10,15 +10,27 @@
   has_many :authentications, :dependent => :destroy
 
   before_save { self.email = email.downcase }
+  before_create :create_remember_token
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  VALID_USERNAME_REGEX = /\A[\w+\-.]+$\z/i
 
-  validates :username, presence: true, uniqueness: { case_sensitive: false }
-  validates :email, presence: true, uniqueness: { case_sensitive: false }
+  validates :username, presence: true, uniqueness: { case_sensitive: false },
+    format: { with: VALID_USERNAME_REGEX}
+  validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: VALID_EMAIL_REGEX }
   has_secure_password
 
 
   validates :password, presence: true, length: { minimum: 6 }
   accepts_nested_attributes_for :loans
+
+
+  def User.new_remember_token
+    SecureRandom.urlsafe_base64
+  end
+
+  def User.digest(token)
+    Digest::SHA1.hexdigest(token.to_s)
+  end
 
 
   def facebook
@@ -54,4 +66,10 @@
   def get_facebook_object_attribute(user, attribute)
     self.facebook.get_object(user)
   end
+
+  private
+
+    def create_remember_token
+      self.remember_token = User.digest(User.new_remember_token)
+    end
 end

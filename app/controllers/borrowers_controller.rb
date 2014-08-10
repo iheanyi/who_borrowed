@@ -10,7 +10,7 @@ class BorrowersController < ApplicationController
 
 
   private
-    def borrower_parmas
+    def borrower_params
       params.require(:borrower).permit(:name)
     end
 end

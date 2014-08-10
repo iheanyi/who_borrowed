@@ -27,7 +27,7 @@ gem 'slim'
 gem 'unicorn'
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'dotenv'
-
+gem 'bootswatch-rails'
 
 group :development do
   gem 'better_errors'
@@ -43,11 +43,13 @@ group :development do
   gem 'rb-inotify', :require=>false
   gem 'guard-livereload'
   gem 'rack-livereload'
+  gem 'pry-rails'
 end
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
 end
+
 group :test do
   gem 'capybara'
   gem 'database_cleaner'

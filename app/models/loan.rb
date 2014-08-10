@@ -10,6 +10,8 @@ class Loan < ActiveRecord::Base
   after_update :destroy_reminder, if: -> {!self.email_me?}
 
 
+  validates :item, presence: true
+  validates :borrower, presence: true
   def item_attributes= p
     build_item p.merge( user: lender )
   end
