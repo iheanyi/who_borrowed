@@ -1,0 +1,16 @@
+<div class="col-md-8 col-md-offset-2">
+  <div class="row">
+    <% if @items.empty? %>
+      <h4>You don't have any items in your inventory yet, why don't you <%= link_to "add", new_item_path %> one?</h4>
+    <% else %>
+      <div class="row">
+      <% @items.each do |item| %>
+          <li><%= item.name %></li>
+
+      <% end %>
+    <% end %>
+    </div>
+
+  </div>
+
+</div>

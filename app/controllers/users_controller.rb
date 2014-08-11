@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def index
   end
 
@@ -16,6 +17,9 @@ class UsersController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def inventory
   end
 
   private

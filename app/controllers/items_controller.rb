@@ -1,5 +1,9 @@
 class ItemsController < ApplicationController
-  before_action :signed_in_user, only: [:create, :destroy]
+  before_action :signed_in_user, only: [:index, :create, :destroy]
+
+  def index
+    @items = current_user.items
+  end
 
   def new
     redirect_to root_url, alert: "Please login" unless signed_in?

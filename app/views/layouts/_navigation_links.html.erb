@@ -2,7 +2,9 @@
 <ul class="nav navbar-nav">
 
 <li><%= link_to 'About', page_path('about') %></li>
-
+<% if signed_in? %>
+  <li><%= link_to "Inventory", items_path %></li>
+<% end %>
 </ul>
 
 
