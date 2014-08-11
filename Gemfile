@@ -48,6 +48,7 @@ end
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
+  gem 'rspec-its'
 end
 
 group :test do

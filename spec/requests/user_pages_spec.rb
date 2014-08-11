@@ -21,6 +21,7 @@ describe "User pages" do
         fill_in "Password", with: "foobar"
         fill_in "Password Confirmation", with: "foobar"
       end
+
       it "should not create a user" do
         expect { click_button submit}.not_to change(User, :count)
       end

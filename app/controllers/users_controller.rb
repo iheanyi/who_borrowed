@@ -10,11 +10,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      session[:user_id] = @user.id
-      current_user = @user
+      sign_in @user
+      flash[:success] = "Welcome to WhoBorrowed!"
       redirect_to root_url, notice: "Thanks for signing up!"
     else
-
       render 'new'
     end
   end

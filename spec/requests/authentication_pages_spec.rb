@@ -28,6 +28,11 @@ describe "Authentication" do
       it { should have_link(user.username, href: "#") }
       it { should have_link('Logout', href: logout_path) }
       it { should_not have_link('Login', href: login_path) }
+
+      describe "followed by signout" do
+        before { click_link "Logout" }
+        it { should have_link('Login') }
+      end
     end
   end
 end

@@ -1,7 +1,7 @@
  class User < ActiveRecord::Base
+  before_save { self.email = email.downcase }
+  before_create :create_remember_token
 
-  #has_many :owned_items, class_name: "Item", foreign_key: "owner_id"
-  #has_many :borrowed_items, class_name: "Item", foreign_key: "borrower_id"
 
   has_many :items
   has_many :loans, :foreign_key => "lender_id"
@@ -9,8 +9,6 @@
 
   has_many :authentications, :dependent => :destroy
 
-  before_save { self.email = email.downcase }
-  before_create :create_remember_token
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   VALID_USERNAME_REGEX = /\A[\w+\-.]+$\z/i
 
@@ -24,14 +22,15 @@
   accepts_nested_attributes_for :loans
 
 
-  def User.new_remember_token
-    SecureRandom.urlsafe_base64
+
+  def get_facebook_picture
+    self.facebook.get_picture("me", :type => "normal")
   end
 
-  def User.digest(token)
-    Digest::SHA1.hexdigest(token.to_s)
+  def gravatar_url
+    gravatar_id = Digest::MD5::hexdigest(self.email).downcase
+    "http://gravatar.com/avatar/#{gravatar_id}.png?s=48"
   end
-
 
   def facebook
     fb_auth = authentications.find_by(provider: "facebook")
@@ -54,22 +53,21 @@
     end
   end
 
-  def get_facebook_picture
-    self.facebook.get_picture("me", :type => "normal")
-  end
-
-  def gravatar_url
-    gravatar_id = Digest::MD5::hexdigest(self.email).downcase
-    "http://gravatar.com/avatar/#{gravatar_id}.png?s=48"
-  end
-
   def get_facebook_object_attribute(user, attribute)
     self.facebook.get_object(user)
   end
 
-  private
+  def User.new_remember_token
+    SecureRandom.urlsafe_base64
+  end
 
+  def User.digest(token)
+    Digest::SHA1.hexdigest(token.to_s)
+  end
+
+  private
     def create_remember_token
-      self.remember_token = User.digest(User.new_remember_token)
+      self.remember_token = User.digest(User.new_remember_token) unless self.remember_token
     end
+
 end
