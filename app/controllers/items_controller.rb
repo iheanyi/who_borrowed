@@ -25,7 +25,7 @@ class ItemsController < ApplicationController
     @item = current_user.items.find(params[:id])
     @item.destroy
     flash[:success] = "Item successfully destroyed!"
-    redirect_to root_url
+    redirect_to items_path
   end
 
   def edit

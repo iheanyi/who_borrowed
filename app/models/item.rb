@@ -1,5 +1,5 @@
 class Item < ActiveRecord::Base
-  has_attached_file :image, :styles => { :medium => "300x300", :thumb => "100x100" }, :default_url => "http://placehold.it/150x150"
+  has_attached_file :image, :styles => { :medium => "300x300", :thumb => "100x100" }, :default_url => "http://placehold.it/100x125"
   belongs_to :category
   belongs_to :user
 

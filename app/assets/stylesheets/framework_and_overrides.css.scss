@@ -36,12 +36,10 @@ img {
 main {
   @extend .container;
   background-color: #eee;
-  //padding-bottom: 80px;
   width: 100%;
   //margin-top: 51px; // accommodate the navbar
-  padding-top: 60px;
   padding-bottom: 80px;
-  height: 100%;
+  min-height: 100%;
 }
 section {
   @extend .row;

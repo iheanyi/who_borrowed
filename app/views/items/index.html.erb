@@ -4,8 +4,19 @@
       <h4>You don't have any items in your inventory yet, why don't you <%= link_to "add", new_item_path %> one?</h4>
     <% else %>
       <div class="row">
+
       <% @items.each do |item| %>
-          <li><%= item.name %></li>
+          <div class="col-md-4 item-card">
+            <div class"">
+              <%= image_tag item.image.url %>
+              <h4><%= item.name %></h4>
+
+                <%= link_to 'Remove Item', item_path(item), method: :delete,
+                data: { confirm: 'Are you sure?' } %>
+
+              </div>
+
+          </div>
 
       <% end %>
     <% end %>

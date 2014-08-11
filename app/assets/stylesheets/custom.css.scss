@@ -62,7 +62,8 @@ body {
 
 main {
   /*height: 90%;*/
-  padding-top: 40px;
+  padding-top: 80px;
+  min-height: 100%;
 }
 
 .no-margin {
@@ -74,5 +75,26 @@ main {
 
 .item-unit {
   border-bottom: 1px solid #a5a5a5;
+}
 
+.custom-btn {
+  border-radius: 0 !important;
+}
+
+.custom-row {
+  margin-top: 0;
+}
+
+.custom-img {
+  margin: 0;
+}
+
+.panel {
+  border: 0 !important;
+}
+.item-card {
+  padding: 8px;
+  min-height: 200px;
+  background-color: #fff;
+  margin-right: 12px;
 }
