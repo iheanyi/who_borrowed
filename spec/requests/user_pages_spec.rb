@@ -9,6 +9,7 @@ describe "User pages" do
     it { should have_content('Login Here') }
   end
 
+
   describe "signup page" do
     before { visit register_path }
 

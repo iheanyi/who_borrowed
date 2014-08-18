@@ -64,6 +64,20 @@ main {
   /*height: 90%;*/
   padding-top: 80px;
   min-height: 100%;
+  background-color: #eee;
+
+}
+
+.clear-left {
+  clear: left;
+}
+
+.item-details {
+  padding-top: 16px;
+}
+
+.edit-item-link {
+  margin-right: 8px;
 }
 
 .no-margin {
@@ -86,12 +100,17 @@ main {
 }
 
 .custom-img {
-  margin: 0;
 }
 
 .panel {
   border: 0 !important;
 }
+
+.loan-info {
+  margin-left: 0 !important;
+  padding: 0 !important;
+}
+
 .item-card {
   padding: 8px;
   min-height: 200px;

@@ -1,5 +1,8 @@
 class BorrowersController < ApplicationController
 
+  def index
+  end
+
   def create
     @borrower = Borrower.new(:borrower_params)
   end

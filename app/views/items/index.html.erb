@@ -1,20 +1,32 @@
 <div class="col-md-8 col-md-offset-2">
   <div class="row">
+
+    <div class="page-header">
+            <h1>Your Inventory <%= link_to "<i class='fa fa-plus-circle fa-fw'></i> Add Item".html_safe, new_item_path, class: "btn btn-success pull-right custom-btn" %></h1>
+
+    </div>
+
+
+
     <% if @items.empty? %>
       <h4>You don't have any items in your inventory yet, why don't you <%= link_to "add", new_item_path %> one?</h4>
     <% else %>
       <div class="row">
 
       <% @items.each do |item| %>
-          <div class="col-md-4 item-card">
-            <div class"">
-              <%= image_tag item.image.url %>
-              <h4><%= item.name %></h4>
+          <div class="col-md-3">
+              <%= image_tag item.image.url(:portrait), class: "pull-left" %>
+              <h4 class="clear-left item-details"><%= item.name %></h4>
 
-                <%= link_to 'Remove Item', item_path(item), method: :delete,
-                data: { confirm: 'Are you sure?' } %>
 
+              <div class="pull-left">
+              <%= link_to '<i class="fa fa-pencil"></i> Edit'.html_safe, item_path(item) %>
+
+              <%= link_to '<i class="fa fa-trash-o"></i> Delete'.html_safe, item_path(item), method: :delete,
+                data: { confirm: 'Are you sure?' }, class: "btn-link-clear btn btn-link" %>
               </div>
+
+
 
           </div>
 
@@ -23,5 +35,4 @@
     </div>
 
   </div>
-
 </div>

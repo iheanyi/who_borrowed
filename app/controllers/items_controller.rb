@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
     @item = current_user.items.build(item_params)
     if @item.save
       flash[:success] = "Item successfully created!"
-      redirect_to root_url
+      redirect_to items_path
     else
       render 'new'
     end
@@ -34,6 +34,6 @@ class ItemsController < ApplicationController
 
   private
     def item_params
-      params.require(:item).permit(:name, :image)
+      params.require(:item).permit(:name, :image, :image_url)
     end
 end

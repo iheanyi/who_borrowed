@@ -12,6 +12,10 @@ class Loan < ActiveRecord::Base
 
   validates :item, presence: true
   validates :borrower, presence: true
+
+  validates_associated :item
+  validates_associated :borrower
+
   def item_attributes= p
     build_item p.merge( user: lender )
   end

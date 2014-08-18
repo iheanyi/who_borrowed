@@ -15,7 +15,7 @@ gem 'pg'
 gem 'omniauth-facebook'
 gem 'figaro'
 gem 'koala'
-gem "paperclip", "~> 4.1"
+gem 'paperclip', github: 'thoughtbot/paperclip'
 gem "formtastic"
 gem 'formtastic-bootstrap'
 gem 'bootstrap-datepicker-rails'
@@ -28,11 +28,12 @@ gem 'unicorn'
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'dotenv'
 gem 'bootswatch-rails'
+gem 'puma'
+gem 'foreman'
 
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_21]
-  gem 'foreman'
   gem 'guard-bundler'
   gem 'guard-rails'
   gem 'guard-rspec'
