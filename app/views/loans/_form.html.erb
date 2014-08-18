@@ -11,7 +11,7 @@
   </ul>
 
 <div class="col-md-6 col-md-offset-3">
-  <%= bootstrap_form_for @loan do |f| %>
+  <%= bootstrap_form_for @loan, :multipart => true do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
 
     <%= f.fields_for :borrower_attributes do |b| %>
@@ -27,12 +27,12 @@
 
     <div class="row">
       <div class="col-md-6">
-        <%= f.date_field :loaned_on, :value => Time.zone.today, max: Time.zone.today-1 %>
+        <%= f.date_field :loaned_on, :value => Time.zone.today-1, max: Time.zone.today %>
         <%= f.check_box :unknown_loan_date, label: "I Don't Remember" %>
       </div>
 
       <div class="col-md-6">
-        <%= f.date_field :return_by, min: Time.zone.today %>
+        <%= f.date_field :return_by, min: Time.zone.today, value: Time.zone.today+14 %>
         <%= f.check_box :return_whenever, label: "Doesn't matter, return whenever" %>
       </div>
     </div>

@@ -31,7 +31,7 @@ class LoansController < ApplicationController
 
     if @loan.save
       unless @loan.return_by.nil?
-        UserMailer.delay_until(@loan.return_by.to_time(:utc)).loan_email(current_user, @loan)
+        UserMailer.delay_until(@loan.return_by.to_time(:utc)).loan_email(current_user.id, @loan.id)
       end
 
       flash[:success] = "Loan Created!"
