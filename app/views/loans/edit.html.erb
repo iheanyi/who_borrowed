@@ -1,0 +1,32 @@
+<div class="col-md-6 col-md-offset-3">
+
+  <h1>Edit Loan</h1>
+  <%= bootstrap_form_for @loan, action: :update,  id: @loan.id do |f|  %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <%= f.fields_for :borrower_attributes do |b| %>
+      <%= b.text_field :name, label: "Borrower Name", value: @loan.borrower.name %>
+    <% end %>
+
+    <%= f.fields_for :item_attributes do |i| %>
+      <%= i.text_field :name, label: "Item Name", value: @loan.item.name %>
+    <% end %>
+
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.date_field :loaned_on, :value => @loan.loaned_on, max: Time.zone.today %>
+        <%= f.check_box :unknown_loan_date, label: "I Don't Remember" %>
+      </div>
+
+      <div class="col-md-6">
+        <%= f.date_field :return_by, min: Time.zone.today, value: @loan.return_by %>
+        <%= f.check_box :return_whenever, label: "Doesn't matter, return whenever" %>
+      </div>
+    </div>
+
+    <%= f.check_box :email_me, label: "Send me an email reminding me that the item is due" %>
+
+    <%= f.submit "Create New Loan", class: "btn btn-primary" %>
+
+  <% end %>
+</div>

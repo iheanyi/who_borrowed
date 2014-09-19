@@ -1,0 +1,45 @@
+
+    <div class="col-md-7 col-md-offset-1">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h4>User Inventory</h4>
+        </div>
+
+        <%= link_to "<i class='fa fa-plus-circle fa-fw'></i> Add New Loan".html_safe, new_loan_url, class: "btn btn-success btn-block custom-btn" %>
+
+        <ul class="loans list-group">
+          <% current_user.loans.each do |loan| %>
+            <li class="list-group-item">
+              <div class="row custom-row">
+
+                <div class="col-md-4">
+                  <%= image_tag loan.item.image.url, class: "img-square custom-img" %>
+                </div>
+                <div class="col-md-7 loan-info">
+                  <h4><%= loan.item.name %></h4>
+                  <h5>Borrowed by <%= loan.borrower.name %></h5>
+
+                  <% if loan.return_by.past? %>
+                    <h6>Item due <%= time_ago_in_words(loan.return_by) %> ago</h6>
+                  <% else %>
+                    <h6>Item due in <%= time_ago_in_words(loan.return_by) %></h6>
+                  <% end %>
+
+                  <div class="pull-right">
+                    <%= link_to '<i class="fa fa-pencil fa-fw"></i> Edit'.html_safe, edit_loan_path(loan), class: "" %>
+                    <%= link_to '<i class="fa fa-trash-o fa-fw"></i> Delete'.html_safe, loan_path(loan), method: :delete, remote: true,
+                    data: { confirm: 'Are you sure?' }, class: "" %>
+                  </div>
+
+
+                </div>
+
+              </div>
+            </li>
+
+          <% end %>
+        </ul>
+
+      </div>
+
+    </div>
