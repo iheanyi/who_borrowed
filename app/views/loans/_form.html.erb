@@ -14,11 +14,12 @@
   <%= bootstrap_form_for @loan, :multipart => true do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
 
-    <%= f.fields_for :borrower_attributes do |b| %>
+
+    <% f.fields_for :borrower_attributes do |b| %>
         <%= b.text_field :name, label: "Borrower's Name" %>
     <% end %>
 
-    <%= f.fields_for :item_attributes do |i| %>
+    <% f.fields_for :item_attributes do |i| %>
       <%= i.text_field :name, label: "Item Name" %>
       <%= i.file_field :image, label: "Picture of Item (Optional)" %>
       <%= i.text_field :image_url, label: "Upload from URL . . . " %>

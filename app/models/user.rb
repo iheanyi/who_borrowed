@@ -19,7 +19,7 @@
 
 
   validates :password, presence: true, length: { minimum: 6 }
-  accepts_nested_attributes_for :loans
+  accepts_nested_attributes_for :loans, allow_destroy: true
 
 
 

@@ -129,6 +129,9 @@ GEM
     guard-rspec (4.2.10)
       guard (~> 2.1)
       rspec (>= 2.14, < 4.0)
+    guard-sidekiq (0.0.11)
+      guard (>= 1.1)
+      sidekiq
     hashie (2.1.2)
     high_voltage (2.2.0)
     hike (1.2.3)
@@ -330,7 +333,6 @@ DEPENDENCIES
   bootstrap_form
   bootswatch-rails
   capybara
-  coffee-rails (~> 4.0.0)
   database_cleaner
   dotenv
   dotenv-rails
@@ -344,6 +346,7 @@ DEPENDENCIES
   guard-livereload
   guard-rails
   guard-rspec
+  guard-sidekiq
   high_voltage
   hub
   jbuilder (~> 2.0)

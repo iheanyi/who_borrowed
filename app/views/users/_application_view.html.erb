@@ -6,83 +6,8 @@
   <div class="col-md-10 col-md-offset-1">
     <%= render 'users/user_info' %>
 
+    <%= render 'loans/user_loan_list' %>
 
-    <div class="col-md-7 col-md-offset-1">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <h4>User Inventory</h4>
-        </div>
-
-        <%= link_to "<i class='fa fa-plus-circle fa-fw'></i> Add New Loan".html_safe, new_loan_url, class: "btn btn-success btn-block custom-btn" %>
-
-        <ul class="list-group">
-          <% current_user.loans.each do |loan| %>
-            <li class="list-group-item">
-              <div class="row custom-row">
-
-                <div class="col-md-4">
-                  <%= image_tag loan.item.image.url, class: "img-square custom-img" %>
-                </div>
-                <div class="col-md-7 loan-info">
-                  <h4><%= loan.item.name %></h4>
-                  <h5>Borrowed by <%= loan.borrower.name %></h5>
-                  <h6>Item due in <%= time_ago_in_words(loan.return_by) %></h6>
-
-                  <div class="pull-right">
-                    <%= link_to '<i class="fa fa-pencil fa-fw"></i> Edit'.html_safe, loan_path(loan), class: "" %>
-                    <%= link_to '<i class="fa fa-trash-o fa-fw"></i> Delete'.html_safe, loan_path(loan), method: :delete,
-                    data: { confirm: 'Are you sure?' }, class: "" %>
-                  </div>
-
-
-                </div>
-
-              </div>
-            </li>
-
-          <% end %>
-        </ul>
-
-      </div>
-
-    </div>
-<!--     <div class="col-md-7 col-md-offset-1 card-container">
-        <div class="row">
-          <div class="col-md-12 inventory-header">
-            <div class="row">
-              <div class="col-md-4 inv-header-container">
-                <h4 class="white-header">User Inventory</h4>
-              </div>
-
-              <div class="col-md-4 pull-right">
-                <%= link_to "<i class='glyphicon glyphicon-plus'></i> Add Loan".html_safe, new_loan_url, class: "btn btn-default pull-right" %>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="row">
-
-          <% current_user.loans.each do |loan| %>
-            <div class="col-md-12 float-left item-unit">
-              <div class="col-md-4">
-                <%= image_tag loan.item.image.url, class: "img-square" %>
-              </div>
-              <div class="col-md-8">
-
-                <h4><%= loan.item.name %></h4>
-                <h5>Borrowed by <%= loan.borrower.name %></h5>
-                <h6>Borrowed on <%= loan.loaned_on %>, should return by <%= loan.return_by %></h6>
-
-                <%= link_to 'Remove Loan', loan_path(loan), method: :delete,
-                data: { confirm: 'Are you sure?' } %>
-
-              </div>
-            </div>
-          <% end %>
-        </div> -->
 
     </div>
 

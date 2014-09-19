@@ -3,17 +3,16 @@ class LoansController < ApplicationController
 
   def new
     redirect_to root_url, alert: "Please Login" unless signed_in?
-
     @loan = Loan.new
   end
 
 
   def edit
-    @loan = Loan.find(params[:id])
+    @loan = current_user.loans.find(params[:id])
   end
 
   def update
-    @loan = Loan.find(params[:id])
+    @loan = current_user.loans.find(params[:id])
   end
 
   def destroy
@@ -39,12 +38,6 @@ class LoansController < ApplicationController
     else
       render 'loans/new'
     end
-  end
-
-  def edit
-  end
-
-  def update
   end
 
   private

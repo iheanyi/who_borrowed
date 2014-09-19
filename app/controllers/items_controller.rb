@@ -11,6 +11,14 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
 
+  def edit
+    @item = current_user.items.find(params[:id])
+  end
+
+  def update
+    @item = current_user.items.find(params[:id])
+  end
+
   def create
     @item = current_user.items.build(item_params)
     if @item.save
@@ -27,10 +35,6 @@ class ItemsController < ApplicationController
     flash[:success] = "Item successfully destroyed!"
     redirect_to items_path
   end
-
-  def edit
-  end
-
 
   private
     def item_params

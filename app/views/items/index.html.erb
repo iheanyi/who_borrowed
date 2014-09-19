@@ -20,7 +20,7 @@
 
 
               <div class="pull-left">
-              <%= link_to '<i class="fa fa-pencil"></i> Edit'.html_safe, item_path(item) %>
+              <%= link_to '<i class="fa fa-pencil"></i> Edit'.html_safe, edit_item_path(item) %>
 
               <%= link_to '<i class="fa fa-trash-o"></i> Delete'.html_safe, item_path(item), method: :delete,
                 data: { confirm: 'Are you sure?' }, class: "btn-link-clear btn btn-link" %>
